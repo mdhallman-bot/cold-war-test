@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 8: Cold War CFA — Sheltered Edition</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --navy: #1a2744;
+    --red: #b91c1c;
+    --gold: #b45309;
+    --cream: #faf8f3;
+    --light-blue: #dbeafe;
+    --border: #c7c0b0;
+    --correct: #166534;
+    --correct-bg: #dcfce7;
+    --incorrect: #991b1b;
+    --incorrect-bg: #fee2e2;
+    --neutral-bg: #f1f0eb;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: #1c1917;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── PRINT SCORE BANNER ── */
+  #score-banner {
+    display: none;
+    background: var(--navy);
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--navy);
+    color: white;
+    padding: 32px 48px 24px;
+    border-bottom: 5px solid var(--gold);
+  }
+  .page-header .kicker {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #93c5fd;
+    margin-bottom: 6px;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  .page-header .subtitle {
+    font-size: 14px;
+    color: #cbd5e1;
+    font-style: italic;
+  }
+  .student-info {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .student-info label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #93c5fd;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .student-info input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #475569;
+    color: white;
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    width: 220px;
+    padding: 2px 0;
+    outline: none;
+  }
+  .student-info input:focus { border-bottom-color: #93c5fd; }
+
+  /* ── MAIN LAYOUT ── */
+  .main { max-width: 960px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  /* ── VOCAB BOX ── */
+  .vocab-box {
+    background: var(--navy);
+    color: white;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+  }
+  .vocab-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #fcd34d;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px 24px;
+  }
+  .vocab-item {
+    display: flex;
+    gap: 8px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .vocab-term {
+    font-weight: 600;
+    color: #93c5fd;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .vocab-def { color: #e2e8f0; }
+
+  /* ── SECTION DIVIDER ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 20px;
+  }
+  .section-header .section-label {
+    background: var(--red);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    white-space: nowrap;
+  }
+  .section-header .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── SOURCE CARD ── */
+  .source-card {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy);
+    background: white;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .source-card-header {
+    background: #f1f5f9;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .source-label {
+    background: var(--navy);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+  .source-title {
+    font-size: 13px;
+    color: #475569;
+    font-style: italic;
+  }
+  .source-body { padding: 16px 18px; }
+  .context-box {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 3px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: #78350f;
+    margin-bottom: 12px;
+    line-height: 1.55;
+  }
+  .context-box strong { color: #92400e; }
+  .source-text {
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: #1c1917;
+    border-left: 3px solid #cbd5e1;
+    padding-left: 14px;
+    margin-left: 4px;
+  }
+  .source-image {
+    display: block;
+    max-width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    margin: 12px auto;
+    border: 1px solid var(--border);
+  }
+  .image-caption {
+    font-size: 12px;
+    color: #64748b;
+    text-align: center;
+    font-style: italic;
+    margin-top: 6px;
+  }
+
+  /* ── CHART ── */
+  .chart-container {
+    margin: 12px 0;
+    padding: 16px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+  .chart-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .chart-wrap { position: relative; height: 220px; }
+  .chart-svg { width: 100%; height: 100%; }
+  .chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 10px;
+    font-size: 12.5px;
+  }
+  .legend-dot {
+    display: inline-block;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  /* ── QUESTIONS ── */
+  .question-block {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+  .question-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .q-number {
+    background: var(--navy);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 13px;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .q-standard {
+    font-size: 11px;
+    color: #64748b;
+    letter-spacing: 0.5px;
+  }
+  .q-text {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    color: #1c1917;
+  }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .option:hover { border-color: var(--navy); background: #f0f4ff; }
+  .option input[type="radio"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--navy); }
+  .option.correct { border-color: var(--correct); background: var(--correct-bg); }
+  .option.incorrect { border-color: var(--incorrect); background: var(--incorrect-bg); }
+  .option.correct .opt-letter { color: var(--correct); font-weight: 700; }
+  .option.incorrect .opt-letter { color: var(--incorrect); font-weight: 700; }
+  .opt-letter { font-weight: 600; color: var(--navy); flex-shrink: 0; }
+  .feedback {
+    display: none;
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .feedback.show { display: block; }
+  .feedback.correct-fb { background: var(--correct-bg); color: var(--correct); border: 1px solid #bbf7d0; }
+  .feedback.incorrect-fb { background: var(--incorrect-bg); color: var(--incorrect); border: 1px solid #fecaca; }
+
+  /* ── SUBMIT / SCORE ── */
+  .submit-area {
+    text-align: center;
+    margin: 40px 0 20px;
+  }
+  #submit-btn {
+    background: var(--navy);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border: none;
+    padding: 14px 48px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.2s;
+  }
+  #submit-btn:hover { background: #263d6e; }
+  #submit-btn:disabled { background: #94a3b8; cursor: default; }
+
+  #score-display {
+    display: none;
+    background: var(--navy);
+    color: white;
+    border-radius: 4px;
+    padding: 28px 36px;
+    text-align: center;
+    margin: 24px auto;
+    max-width: 500px;
+  }
+  #score-display .score-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #93c5fd;
+    margin-bottom: 8px;
+  }
+  #score-display .score-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    color: #fcd34d;
+  }
+  #score-display .score-fraction {
+    font-size: 18px;
+    color: #cbd5e1;
+    margin-top: 6px;
+  }
+  #score-display .score-grade {
+    font-size: 20px;
+    margin-top: 12px;
+    color: white;
+    font-style: italic;
+  }
+
+  #print-btn {
+    display: none;
+    background: var(--red);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    border: none;
+    padding: 10px 32px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 16px;
+  }
+  #print-btn:hover { background: #991b1b; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { font-size: 13px; background: white; }
+    #score-banner { display: block !important; }
+    .page-header { padding: 20px 32px 16px; }
+    .main { padding: 16px 20px; }
+    .submit-area, #print-btn, #submit-btn { display: none !important; }
+    #score-display { display: block !important; border: 2px solid var(--navy); }
+    .source-image { max-height: 240px; }
+    .option { page-break-inside: avoid; }
+    .question-block { page-break-inside: avoid; border: 1px solid #ccc; }
+    .feedback.show { display: block !important; }
+  }
+</style>
+</head>
+<body>
+
+<div id="score-banner"></div>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="kicker">Albuquerque Public Schools · US History · Unit 8</div>
+  <h1>Cold War Common Formative Assessment</h1>
+  <div class="subtitle">Sheltered Edition — History Standard 1.2</div>
+  <div class="student-info">
+    <div><label>Student Name</label><input type="text" id="student-name" placeholder="__________________________"></div>
+    <div><label>Period</label><input type="text" id="student-period" placeholder="________" style="width:80px"></div>
+    <div><label>Date</label><input type="text" id="student-date" placeholder="________" style="width:120px"></div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- VOCAB BOX -->
+<div class="vocab-box">
+  <h2>📖 Key Vocabulary — Use these definitions to help you answer the questions.</h2>
+  <div class="vocab-grid">
+    <div class="vocab-item"><span class="vocab-term">Communism:</span><span class="vocab-def">a system where the government controls the economy and there is no private property</span></div>
+    <div class="vocab-item"><span class="vocab-term">Capitalism:</span><span class="vocab-def">a system where individuals and businesses own property and control trade</span></div>
+    <div class="vocab-item"><span class="vocab-term">Containment:</span><span class="vocab-def">the U.S. policy of stopping the spread of communism to other countries</span></div>
+    <div class="vocab-item"><span class="vocab-term">Cold War:</span><span class="vocab-def">a period of tension between the U.S. and Soviet Union (1945–1991); no direct fighting between them</span></div>
+    <div class="vocab-item"><span class="vocab-term">Superpower:</span><span class="vocab-def">a nation with great military and economic power that influences world events</span></div>
+    <div class="vocab-item"><span class="vocab-term">Arms Race:</span><span class="vocab-def">the competition between the U.S. and Soviet Union to build more and stronger weapons</span></div>
+    <div class="vocab-item"><span class="vocab-term">Domino Theory:</span><span class="vocab-def">the idea that if one country became communist, neighboring countries would follow, like falling dominoes</span></div>
+    <div class="vocab-item"><span class="vocab-term">Deterrence:</span><span class="vocab-def">building up weapons so the enemy is afraid to attack</span></div>
+    <div class="vocab-item"><span class="vocab-term">Blockade:</span><span class="vocab-def">using military force to cut off supplies or movement to a place</span></div>
+    <div class="vocab-item"><span class="vocab-term">Proxy War:</span><span class="vocab-def">a conflict where two superpowers support opposite sides instead of fighting each other directly</span></div>
+    <div class="vocab-item"><span class="vocab-term">Negotiation:</span><span class="vocab-def">talking and working together to reach an agreement without fighting</span></div>
+    <div class="vocab-item"><span class="vocab-term">Escalation:</span><span class="vocab-def">when a conflict gets bigger or more intense over time</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION A: ORIGINS / TRUMAN DOCTRINE
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-label">Section A</span>
+  <div class="section-line"></div>
+  <span style="font-size:13px;color:#64748b;white-space:nowrap;">Origins &amp; Containment</span>
+  <div class="section-line"></div>
+</div>
+
+<div class="source-card">
+  <div class="source-card-header">
+    <span class="source-label">Source A</span>
+    <span class="source-title">President Harry S. Truman addressing Congress, March 12, 1947</span>
+  </div>
+  <div class="source-body">
+    <div class="context-box">
+      <strong>Background:</strong> After World War II ended in 1945, the United States and the Soviet Union became rivals. The U.S. had a <em>democratic, capitalist</em> system. The Soviet Union had a <em>communist</em> system. Both countries had nuclear weapons. Communist forces were threatening the governments of Greece and Turkey. President Truman asked Congress for money and military support to help those countries fight communism.
+    </div>
+    <img src="https://raw.githubusercontent.com/mdhallman-bot/cold-war-test/main/1947-state-of-the-union.jpg"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+         alt="President Truman addressing Congress" class="source-image">
+    <div style="display:none;text-align:center;padding:20px;background:#f1f5f9;color:#64748b;font-style:italic;font-size:13px;">
+      [Photo: President Truman addressing a joint session of Congress, March 12, 1947 — Truman Library &amp; Museum]
+    </div>
+    <div class="image-caption">President Harry S. Truman addressing a joint session of Congress, asking for $400 million in aid to Greece and Turkey. Truman Library &amp; Museum.</div>
+    <br>
+    <div class="source-text">
+      "At the present moment in world history, nearly every nation must choose between alternative ways of life… One way of life is based upon the will of the majority… The second way of life is based upon the will of a minority forcibly imposed upon the majority… I believe that it must be the policy of the United States to support free peoples who are resisting attempted subjugation by armed minorities or by outside pressures."
+    </div>
+  </div>
+</div>
+
+<div class="question-block" data-correct="C">
+  <div class="question-meta"><div class="q-number">1</div><span class="q-standard">1.2.h · DOK 1</span></div>
+  <div class="q-text">Which statement best describes the <strong>main idea</strong> of Source A?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q1" value="A"><span class="opt-letter">A.</span> The United States should stay out of other countries' problems after World War II.</label>
+    <label class="option"><input type="radio" name="q1" value="B"><span class="opt-letter">B.</span> The United States should use military force to defeat the Soviet Union directly.</label>
+    <label class="option"><input type="radio" name="q1" value="C"><span class="opt-letter">C.</span> The United States should help countries that are resisting communist takeover.</label>
+    <label class="option"><input type="radio" name="q1" value="D"><span class="opt-letter">D.</span> The United States and Soviet Union should work together to keep world peace.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="C">
+  <div class="question-meta"><div class="q-number">2</div><span class="q-standard">1.2.g · DOK 3</span></div>
+  <div class="q-text">Using Source A and your knowledge of history, which of the following best represents a perspective <strong>opposing</strong> the Truman Doctrine?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q2" value="A"><span class="opt-letter">A.</span> The United States has a responsibility to protect democracy wherever it is threatened around the world.</label>
+    <label class="option"><input type="radio" name="q2" value="B"><span class="opt-letter">B.</span> Providing financial and military aid to Greece and Turkey will prevent communist expansion in Europe.</label>
+    <label class="option"><input type="radio" name="q2" value="C"><span class="opt-letter">C.</span> The United States should focus on rebuilding its own country rather than getting involved in foreign conflicts.</label>
+    <label class="option"><input type="radio" name="q2" value="D"><span class="opt-letter">D.</span> Containment is necessary because allowing one country to fall to communism will weaken neighboring democracies.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="B">
+  <div class="question-meta"><div class="q-number">3</div><span class="q-standard">1.2.b · DOK 2</span></div>
+  <div class="q-text">Using Source A and your knowledge of history, which of the following best describes a <strong>cause</strong> of the Truman Doctrine?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q3" value="A"><span class="opt-letter">A.</span> The Soviet Union invaded the United States and threatened its borders directly.</label>
+    <label class="option"><input type="radio" name="q3" value="B"><span class="opt-letter">B.</span> Communist movements were gaining strength in countries like Greece and Turkey after WWII.</label>
+    <label class="option"><input type="radio" name="q3" value="C"><span class="opt-letter">C.</span> The United States needed to rebuild its military after losing soldiers in the Korean War.</label>
+    <label class="option"><input type="radio" name="q3" value="D"><span class="opt-letter">D.</span> President Truman wanted to form a military alliance with the Soviet Union against Europe.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION B: KOREAN WAR
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-label">Section B</span>
+  <div class="section-line"></div>
+  <span style="font-size:13px;color:#64748b;white-space:nowrap;">The Korean War</span>
+  <div class="section-line"></div>
+</div>
+
+<div class="source-card">
+  <div class="source-card-header">
+    <span class="source-label">Source B</span>
+    <span class="source-title">General Douglas MacArthur, Letter to House Republican Leader Joseph Martin, March 20, 1951</span>
+  </div>
+  <div class="source-body">
+    <div class="context-box">
+      <strong>Background:</strong> After WWII, Korea was divided — <em>North Korea</em> became communist (supported by the Soviet Union and China), and <em>South Korea</em> was supported by the United States. In 1950, North Korea invaded South Korea, starting the Korean War. General MacArthur was the U.S. commander. He disagreed with President Truman's plan to fight a "limited war." MacArthur wanted to attack communist China directly. Truman later fired MacArthur for publicly disagreeing with U.S. policy.
+    </div>
+    <div class="source-text">
+      "It seems strangely difficult for some to realize that here in Asia is where the Communist conspirators have elected to make their play for global conquest… We must win. There is no substitute for victory."
+    </div>
+  </div>
+</div>
+
+<div class="question-block" data-correct="B">
+  <div class="question-meta"><div class="q-number">4</div><span class="q-standard">1.2.a · DOK 2</span></div>
+  <div class="q-text">Which of the following best describes what <strong>changed</strong> in U.S. foreign policy after the Korean War, compared to before World War II?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q4" value="A"><span class="opt-letter">A.</span> The United States returned to isolationism and avoided involvement in foreign conflicts.</label>
+    <label class="option"><input type="radio" name="q4" value="B"><span class="opt-letter">B.</span> The United States became committed to containing communism and maintaining a strong military presence overseas.</label>
+    <label class="option"><input type="radio" name="q4" value="C"><span class="opt-letter">C.</span> The United States focused only on rebuilding Europe through economic aid programs.</label>
+    <label class="option"><input type="radio" name="q4" value="D"><span class="opt-letter">D.</span> The United States ended its military alliances with other democratic nations.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="C">
+  <div class="question-meta"><div class="q-number">5</div><span class="q-standard">1.2.a · DOK 3</span></div>
+  <div class="q-text">Using Source B and your knowledge of history, which conclusion best describes the <strong>tension between military goals and political policy</strong> during the Korean War?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q5" value="A"><span class="opt-letter">A.</span> Military commanders and political leaders always agreed on how to fight the Cold War.</label>
+    <label class="option"><input type="radio" name="q5" value="B"><span class="opt-letter">B.</span> The U.S. government believed total military victory was always more important than diplomacy.</label>
+    <label class="option"><input type="radio" name="q5" value="C"><span class="opt-letter">C.</span> There was significant disagreement within the U.S. government about how far to take the fight against communism.</label>
+    <label class="option"><input type="radio" name="q5" value="D"><span class="opt-letter">D.</span> MacArthur's strategy of expanding the war was eventually adopted by President Truman.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="A">
+  <div class="question-meta"><div class="q-number">6</div><span class="q-standard">1.2.a · DOK 2</span></div>
+  <div class="q-text">Using Source B and your knowledge of history, which of the following best shows a <strong>continuity</strong> in U.S. Cold War policy from the Truman Doctrine through the Korean War?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q6" value="A"><span class="opt-letter">A.</span> The U.S. continued to believe that stopping the spread of communism was a top national priority.</label>
+    <label class="option"><input type="radio" name="q6" value="B"><span class="opt-letter">B.</span> The U.S. shifted from supporting allies financially to avoiding all military involvement abroad.</label>
+    <label class="option"><input type="radio" name="q6" value="C"><span class="opt-letter">C.</span> The U.S. changed its strategy from containment to direct war against the Soviet Union.</label>
+    <label class="option"><input type="radio" name="q6" value="D"><span class="opt-letter">D.</span> The U.S. stopped supporting United Nations efforts after disagreements over Korea.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION C: CUBAN MISSILE CRISIS
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-label">Section C</span>
+  <div class="section-line"></div>
+  <span style="font-size:13px;color:#64748b;white-space:nowrap;">Cuban Missile Crisis</span>
+  <div class="section-line"></div>
+</div>
+
+<div class="source-card">
+  <div class="source-card-header">
+    <span class="source-label">Source C</span>
+    <span class="source-title">President John F. Kennedy, Television Address to the Nation, October 22, 1962</span>
+  </div>
+  <div class="source-body">
+    <div class="context-box">
+      <strong>Background:</strong> In October 1962, U.S. spy planes discovered that the Soviet Union was building <em>nuclear missile bases</em> in Cuba — just 90 miles from Florida. President Kennedy demanded the missiles be removed. For 13 days, the U.S. and Soviet Union were on the edge of nuclear war. The crisis ended when the Soviets agreed to remove the missiles in exchange for a U.S. promise not to invade Cuba.
+    </div>
+    <div class="source-text">
+      "The 1930s taught us a clear lesson: aggressive conduct, if allowed to go unchecked and unchallenged, ultimately leads to war… Our goal is not the victory of might, but the vindication of right — not peace at the expense of freedom, but both peace and freedom, here in this hemisphere and, we hope, around the world."
+    </div>
+  </div>
+</div>
+
+<div class="source-card">
+  <div class="source-card-header">
+    <span class="source-label">Source D</span>
+    <span class="source-title">Map: Range of Soviet Nuclear Missiles in Cuba, 1962 — CIA Briefing Board for President Kennedy</span>
+  </div>
+  <div class="source-body">
+    <div class="context-box">
+      <strong>What to look for:</strong> This map shows how far Soviet missiles could reach from Cuba. The circles show the <em>range</em> — how far the missiles could travel. Look at which U.S. cities fall inside the circles.
+    </div>
+    <img src="https://raw.githubusercontent.com/mdhallman-bot/cold-war-test/main/cuban-missile-range-map.jpg"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+         alt="Map of Soviet missile range from Cuba" class="source-image">
+    <div style="display:none;text-align:center;padding:20px;background:#f1f5f9;color:#64748b;font-style:italic;font-size:13px;">
+      [Map: Soviet MRBM range circles extending from Cuba across the eastern United States — CIA/JFK Presidential Library, public domain]
+    </div>
+    <div class="image-caption">CIA Briefing Board, 1962. Map showing the range of Soviet medium-range ballistic missiles if launched from Cuba. JFK Presidential Library &amp; Museum. Public domain.</div>
+  </div>
+</div>
+
+<div class="question-block" data-correct="C">
+  <div class="question-meta"><div class="q-number">7</div><span class="q-standard">1.2.h · DOK 2</span></div>
+  <div class="q-text">Based on Source D (the missile range map) and your knowledge of history, which of the following best describes <strong>why the Cuban Missile Crisis was so dangerous</strong>?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q7" value="A"><span class="opt-letter">A.</span> Cuba had already launched missiles at the United States before Kennedy's speech.</label>
+    <label class="option"><input type="radio" name="q7" value="B"><span class="opt-letter">B.</span> The United States did not have any nuclear weapons to defend itself at the time.</label>
+    <label class="option"><input type="radio" name="q7" value="C"><span class="opt-letter">C.</span> Soviet missiles in Cuba could reach most major American cities, putting millions of lives at risk.</label>
+    <label class="option"><input type="radio" name="q7" value="D"><span class="opt-letter">D.</span> Cuba had declared war on the United States before the crisis began.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="C">
+  <div class="question-meta"><div class="q-number">8</div><span class="q-standard">1.2.h · DOK 3</span></div>
+  <div class="q-text">Using Source C and your knowledge of history, which of the following best evaluates the <strong>significance of negotiation</strong> during the Cuban Missile Crisis?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q8" value="A"><span class="opt-letter">A.</span> Negotiation played no role; the crisis ended only because the U.S. threatened a military invasion of Cuba.</label>
+    <label class="option"><input type="radio" name="q8" value="B"><span class="opt-letter">B.</span> Negotiation was unnecessary because neither side actually had nuclear weapons ready to use.</label>
+    <label class="option"><input type="radio" name="q8" value="C"><span class="opt-letter">C.</span> Negotiation and compromise between Kennedy and Khrushchev were essential to preventing a nuclear war.</label>
+    <label class="option"><input type="radio" name="q8" value="D"><span class="opt-letter">D.</span> The Soviet Union refused all negotiation and only removed missiles after military force was used.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="D">
+  <div class="question-meta"><div class="q-number">9</div><span class="q-standard">1.2.b · DOK 2</span></div>
+  <div class="q-text">Using Source C and your knowledge of history, which of the following best describes an <strong>effect</strong> of the Cuban Missile Crisis on U.S.–Soviet relations?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q9" value="A"><span class="opt-letter">A.</span> The U.S. and Soviet Union became military allies after the crisis ended.</label>
+    <label class="option"><input type="radio" name="q9" value="B"><span class="opt-letter">B.</span> The crisis led to increased tensions with no communication between the two superpowers.</label>
+    <label class="option"><input type="radio" name="q9" value="C"><span class="opt-letter">C.</span> The crisis showed that direct military confrontation was the best way to solve Cold War disagreements.</label>
+    <label class="option"><input type="radio" name="q9" value="D"><span class="opt-letter">D.</span> The crisis led both sides to create better communication systems to avoid future nuclear conflict.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION D: ARMS RACE CHART
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-label">Section D</span>
+  <div class="section-line"></div>
+  <span style="font-size:13px;color:#64748b;white-space:nowrap;">The Arms Race — Data Analysis</span>
+  <div class="section-line"></div>
+</div>
+
+<div class="source-card">
+  <div class="source-card-header">
+    <span class="source-label">Source E</span>
+    <span class="source-title">Chart: Estimated U.S. and Soviet Nuclear Warhead Stockpiles, 1950–1970 — Bulletin of the Atomic Scientists / Natural Resources Defense Council</span>
+  </div>
+  <div class="source-body">
+    <div class="context-box">
+      <strong>What to look for:</strong> This chart shows how many nuclear weapons the United States (🔵 blue) and the Soviet Union (🔴 red) had each year. Look at which country had more weapons and how the numbers changed over time. A <em>warhead</em> is a nuclear weapon attached to a missile.
+    </div>
+    <div class="chart-container">
+      <div class="chart-title">Estimated Nuclear Warhead Stockpiles: U.S. vs. Soviet Union, 1950–1970</div>
+      <div class="chart-wrap">
+        <svg class="chart-svg" viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid -->
+          <line x1="60" y1="10" x2="60" y2="185" stroke="#d1d5db" stroke-width="1"/>
+          <line x1="60" y1="185" x2="685" y2="185" stroke="#d1d5db" stroke-width="1"/>
+          <!-- Horizontal grid lines -->
+          <line x1="60" y1="185" x2="685" y2="185" stroke="#e5e7eb" stroke-width="0.5"/>
+          <line x1="60" y1="148" x2="685" y2="148" stroke="#e5e7eb" stroke-width="0.5"/>
+          <line x1="60" y1="111" x2="685" y2="111" stroke="#e5e7eb" stroke-width="0.5"/>
+          <line x1="60" y1="74" x2="685" y2="74" stroke="#e5e7eb" stroke-width="0.5"/>
+          <line x1="60" y1="37" x2="685" y2="37" stroke="#e5e7eb" stroke-width="0.5"/>
+          <line x1="60" y1="10" x2="685" y2="10" stroke="#e5e7eb" stroke-width="0.5"/>
+          <!-- Y axis labels -->
+          <text x="52" y="188" text-anchor="end" font-size="10" fill="#6b7280">0</text>
+          <text x="52" y="151" text-anchor="end" font-size="10" fill="#6b7280">5,000</text>
+          <text x="52" y="114" text-anchor="end" font-size="10" fill="#6b7280">10,000</text>
+          <text x="52" y="77" text-anchor="end" font-size="10" fill="#6b7280">15,000</text>
+          <text x="52" y="40" text-anchor="end" font-size="10" fill="#6b7280">20,000</text>
+          <text x="52" y="13" text-anchor="end" font-size="10" fill="#6b7280">25,000</text>
+          <!-- X axis labels: 1950,1952,1954,1956,1958,1960,1962,1964,1966,1968,1970 -->
+          <!-- 11 points, x from 60 to 685, step = 62.5 -->
+          <text x="60" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1950</text>
+          <text x="122" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1952</text>
+          <text x="185" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1954</text>
+          <text x="247" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1956</text>
+          <text x="310" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1958</text>
+          <text x="372" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1960</text>
+          <text x="435" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1962</text>
+          <text x="497" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1964</text>
+          <text x="560" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1966</text>
+          <text x="622" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1968</text>
+          <text x="685" y="200" text-anchor="middle" font-size="10" fill="#6b7280">1970</text>
+
+          <!-- 
+            US data (approx, scaled to max 25000 = y=10):
+            scale: y = 185 - (val/25000)*175
+            1950:369  1952:841  1954:1750  1956:3620  1958:6000  1960:12000  1962:18000  1964:20000  1966:23000  1968:24000  1970:26000→clip to 25000
+          -->
+          <polyline
+            points="60,182 122,179 185,173 247,160 310,143 372,101 435,59 497,45 560,24 622,17 685,10"
+            fill="none" stroke="#1d4ed8" stroke-width="2.5" stroke-linejoin="round"/>
+
+          <!-- Dots US -->
+          <circle cx="60" cy="182" r="3" fill="#1d4ed8"/>
+          <circle cx="122" cy="179" r="3" fill="#1d4ed8"/>
+          <circle cx="185" cy="173" r="3" fill="#1d4ed8"/>
+          <circle cx="247" cy="160" r="3" fill="#1d4ed8"/>
+          <circle cx="310" cy="143" r="3" fill="#1d4ed8"/>
+          <circle cx="372" cy="101" r="3" fill="#1d4ed8"/>
+          <circle cx="435" cy="59" r="3" fill="#1d4ed8"/>
+          <circle cx="497" cy="45" r="3" fill="#1d4ed8"/>
+          <circle cx="560" cy="24" r="3" fill="#1d4ed8"/>
+          <circle cx="622" cy="17" r="3" fill="#1d4ed8"/>
+          <circle cx="685" cy="10" r="3" fill="#1d4ed8"/>
+
+          <!-- 
+            USSR data (approx):
+            1950:5  1952:50  1954:150  1956:400  1958:900  1960:1600  1962:3000  1964:5000  1966:7000  1968:9000  1970:11000
+            y = 185 - (val/25000)*175
+          -->
+          <polyline
+            points="60,185 122,185 185,184 247,182 310,179 372,174 435,164 497,150 560,136 622,122 685,108"
+            fill="none" stroke="#b91c1c" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6,3"/>
+
+          <!-- Dots USSR -->
+          <circle cx="60" cy="185" r="3" fill="#b91c1c"/>
+          <circle cx="122" cy="185" r="3" fill="#b91c1c"/>
+          <circle cx="185" cy="184" r="3" fill="#b91c1c"/>
+          <circle cx="247" cy="182" r="3" fill="#b91c1c"/>
+          <circle cx="310" cy="179" r="3" fill="#b91c1c"/>
+          <circle cx="372" cy="174" r="3" fill="#b91c1c"/>
+          <circle cx="435" cy="164" r="3" fill="#b91c1c"/>
+          <circle cx="497" cy="150" r="3" fill="#b91c1c"/>
+          <circle cx="560" cy="136" r="3" fill="#b91c1c"/>
+          <circle cx="622" cy="122" r="3" fill="#b91c1c"/>
+          <circle cx="685" cy="108" r="3" fill="#b91c1c"/>
+
+          <!-- Cuban Missile Crisis annotation -->
+          <line x1="435" y1="10" x2="435" y2="185" stroke="#92400e" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="437" y="22" font-size="9" fill="#92400e">Cuban Missile</text>
+          <text x="437" y="33" font-size="9" fill="#92400e">Crisis (1962)</text>
+
+          <!-- Y axis label -->
+          <text x="12" y="110" text-anchor="middle" font-size="10" fill="#6b7280" transform="rotate(-90,12,110)">Nuclear Warheads</text>
+        </svg>
+      </div>
+      <div class="chart-legend">
+        <span><span class="legend-dot" style="background:#1d4ed8"></span>United States</span>
+        <span><span class="legend-dot" style="background:#b91c1c"></span>Soviet Union</span>
+      </div>
+      <div style="font-size:11px;color:#94a3b8;text-align:center;margin-top:6px;">
+        Source: Bulletin of the Atomic Scientists / Natural Resources Defense Council. Figures are estimates.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="question-block" data-correct="A">
+  <div class="question-meta"><div class="q-number">10</div><span class="q-standard">1.2.b · DOK 2</span></div>
+  <div class="q-text">Using Source E, which of the following best describes a <strong>trend shown in the chart</strong>?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q10" value="A"><span class="opt-letter">A.</span> Both the U.S. and Soviet Union rapidly increased their nuclear weapons stockpiles from 1950 to 1970.</label>
+    <label class="option"><input type="radio" name="q10" value="B"><span class="opt-letter">B.</span> The Soviet Union had more nuclear weapons than the United States throughout the entire period.</label>
+    <label class="option"><input type="radio" name="q10" value="C"><span class="opt-letter">C.</span> Both countries reduced their nuclear weapons stockpiles after the Cuban Missile Crisis.</label>
+    <label class="option"><input type="radio" name="q10" value="D"><span class="opt-letter">D.</span> The United States and Soviet Union had about the same number of nuclear weapons throughout this period.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="B">
+  <div class="question-meta"><div class="q-number">11</div><span class="q-standard">1.2.a · DOK 2</span></div>
+  <div class="q-text">Carefully analyze Source E. Which of the following conclusions can be drawn about the <strong>arms race during the Cold War</strong>?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q11" value="A"><span class="opt-letter">A.</span> The arms race had little effect on U.S.–Soviet tensions because both sides agreed not to use nuclear weapons.</label>
+    <label class="option"><input type="radio" name="q11" value="B"><span class="opt-letter">B.</span> The rapid growth of nuclear stockpiles on both sides made the Cold War increasingly dangerous throughout this period.</label>
+    <label class="option"><input type="radio" name="q11" value="C"><span class="opt-letter">C.</span> The Soviet Union quickly matched U.S. nuclear strength and had the same number of weapons by 1962.</label>
+    <label class="option"><input type="radio" name="q11" value="D"><span class="opt-letter">D.</span> The United States stopped building nuclear weapons after the Cuban Missile Crisis to show it wanted peace.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION E: VIETNAM / DOMINO THEORY
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-label">Section E</span>
+  <div class="section-line"></div>
+  <span style="font-size:13px;color:#64748b;white-space:nowrap;">Vietnam War &amp; Domino Theory</span>
+  <div class="section-line"></div>
+</div>
+
+<div class="source-card">
+  <div class="source-card-header">
+    <span class="source-label">Source F</span>
+    <span class="source-title">President Dwight D. Eisenhower, Press Conference, April 7, 1954</span>
+  </div>
+  <div class="source-body">
+    <div class="context-box">
+      <strong>Background:</strong> After the Korean War, the U.S. became increasingly involved in Vietnam. Vietnam was divided — communist <em>North Vietnam</em> was supported by the Soviet Union and China, and <em>South Vietnam</em> was supported by the U.S. President Eisenhower introduced the <em>domino theory</em> to explain why the U.S. needed to prevent communism from spreading in Southeast Asia.
+    </div>
+    <div class="source-text">
+      "You have a row of dominoes set up, you knock over the first one, and what will happen to the last one is the certainty that it will go over very quickly… Asia… has already lost some 450 million of its peoples to the Communist dictatorship, and we simply can't afford greater losses."
+    </div>
+  </div>
+</div>
+
+<div class="source-card">
+  <div class="source-card-header">
+    <span class="source-label">Source G</span>
+    <span class="source-title">Political Cartoon: "…And of course, if Cambodia fell, then Laos would fall, and if Laos fell…" — Doug Marlette, c. 1972, Library of Congress</span>
+  </div>
+  <div class="source-body">
+    <div class="context-box">
+      <strong>What to look for:</strong> This cartoon shows President Nixon and a military officer walking past a graveyard. The gravestones are shaped like <em>dominoes</em> and are labeled "Viet War Dead." The officer is describing the domino theory, explaining why the U.S. had to keep fighting. Think about what message the cartoonist is sending about the domino theory.
+    </div>
+    <img src="https://raw.githubusercontent.com/mdhallman-bot/cold-war-test/main/marlette-jpg.jpg"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+         alt="Marlette domino theory cartoon" class="source-image">
+    <div style="display:none;text-align:center;padding:20px;background:#f1f5f9;color:#64748b;font-style:italic;font-size:13px;">
+      [Political cartoon: President Nixon and a military officer walk past gravestones shaped like dominoes labeled "Viet War Dead." The officer explains the domino theory. By Doug Marlette, c. 1972. Library of Congress.]
+    </div>
+    <div class="image-caption">Doug Marlette, c. 1972. "…and of course, if Cambodia fell, then Laos would fall, and if Laos fell…" Library of Congress Prints and Photographs Division. Art Wood Collection of Cartoon and Caricature.</div>
+  </div>
+</div>
+
+<div class="question-block" data-correct="B">
+  <div class="question-meta"><div class="q-number">12</div><span class="q-standard">1.2.g · DOK 2</span></div>
+  <div class="q-text">Using Sources F and G and your knowledge of history, which of the following best describes <strong>opposing perspectives</strong> Americans held about U.S. involvement in Vietnam?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q12" value="A"><span class="opt-letter">A.</span> All Americans agreed the U.S. should send troops to Vietnam to stop communism.</label>
+    <label class="option"><input type="radio" name="q12" value="B"><span class="opt-letter">B.</span> Some Americans believed the domino theory justified involvement; others argued the war was unnecessary and caused too much suffering.</label>
+    <label class="option"><input type="radio" name="q12" value="C"><span class="opt-letter">C.</span> Congress and the President always agreed on the best strategy for fighting in Vietnam.</label>
+    <label class="option"><input type="radio" name="q12" value="D"><span class="opt-letter">D.</span> Most Americans opposed the war from the beginning and the U.S. never sent significant troops.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="C">
+  <div class="question-meta"><div class="q-number">13</div><span class="q-standard">1.2.b · DOK 1</span></div>
+  <div class="q-text">According to Source F, what was the <strong>main reason</strong> President Eisenhower believed the U.S. needed to prevent communism from spreading in Southeast Asia?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q13" value="A"><span class="opt-letter">A.</span> Southeast Asia had valuable oil reserves that the U.S. needed to protect.</label>
+    <label class="option"><input type="radio" name="q13" value="B"><span class="opt-letter">B.</span> The Soviet Union had already invaded several Southeast Asian countries militarily.</label>
+    <label class="option"><input type="radio" name="q13" value="C"><span class="opt-letter">C.</span> If one country fell to communism, neighboring countries would likely follow.</label>
+    <label class="option"><input type="radio" name="q13" value="D"><span class="opt-letter">D.</span> Vietnam had asked the United States to become a permanent military ally.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="D">
+  <div class="question-meta"><div class="q-number">14</div><span class="q-standard">1.2.g · DOK 2</span></div>
+  <div class="q-text">Using Sources F and G, which of the following best reflects how the <strong>domino theory shaped U.S. foreign policy</strong> during the Cold War?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q14" value="A"><span class="opt-letter">A.</span> The domino theory led the U.S. to cooperate with communist nations to maintain stability in Asia.</label>
+    <label class="option"><input type="radio" name="q14" value="B"><span class="opt-letter">B.</span> The domino theory caused the U.S. to withdraw from all international alliances to avoid conflict.</label>
+    <label class="option"><input type="radio" name="q14" value="C"><span class="opt-letter">C.</span> The domino theory united U.S. policymakers and the public in full support of the Vietnam War.</label>
+    <label class="option"><input type="radio" name="q14" value="D"><span class="opt-letter">D.</span> The domino theory led the U.S. to form alliances with non-communist nations and intervene militarily to prevent the spread of communism.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="C">
+  <div class="question-meta"><div class="q-number">15</div><span class="q-standard">1.2.h · DOK 2</span></div>
+  <div class="q-text">Using Sources F and G and your knowledge of history, which of the following best evaluates the <strong>domino theory as an idea that shaped American history</strong>?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q15" value="A"><span class="opt-letter">A.</span> The domino theory was proven entirely correct — every country near Vietnam became communist.</label>
+    <label class="option"><input type="radio" name="q15" value="B"><span class="opt-letter">B.</span> The domino theory had little impact on U.S. decisions and was rarely used to justify foreign policy.</label>
+    <label class="option"><input type="radio" name="q15" value="C"><span class="opt-letter">C.</span> The domino theory was a powerful idea that shaped decades of U.S. foreign policy, though its predictions did not fully come true.</label>
+    <label class="option"><input type="radio" name="q15" value="D"><span class="opt-letter">D.</span> The domino theory was only used once by Eisenhower and was quickly abandoned by later presidents.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<div class="question-block" data-correct="B">
+  <div class="question-meta"><div class="q-number">16</div><span class="q-standard">1.2.a · DOK 2</span></div>
+  <div class="q-text">Which of the following best shows how U.S. involvement in Vietnam represented a <strong>continuity</strong> in Cold War foreign policy?</div>
+  <div class="options">
+    <label class="option"><input type="radio" name="q16" value="A"><span class="opt-letter">A.</span> The U.S. broke from its containment strategy and allowed communism to spread freely in Asia.</label>
+    <label class="option"><input type="radio" name="q16" value="B"><span class="opt-letter">B.</span> Like in Korea, the U.S. intervened militarily in Vietnam to stop the spread of communism.</label>
+    <label class="option"><input type="radio" name="q16" value="C"><span class="opt-letter">C.</span> The U.S. relied entirely on economic aid rather than military force in Vietnam.</label>
+    <label class="option"><input type="radio" name="q16" value="D"><span class="opt-letter">D.</span> Vietnam was the first time the U.S. ever became involved in a conflict in Asia.</label>
+  </div>
+  <div class="feedback"></div>
+</div>
+
+<!-- SUBMIT -->
+<div class="submit-area">
+  <button id="submit-btn" onclick="gradeTest()">Submit &amp; See My Score</button>
+</div>
+
+<div id="score-display">
+  <div class="score-label">Your Score</div>
+  <div class="score-number" id="score-pct">—</div>
+  <div class="score-fraction" id="score-frac">— / 16 correct</div>
+  <div class="score-grade" id="score-grade"></div>
+  <br>
+  <button id="print-btn" onclick="printTest()">🖨 Save / Print as PDF</button>
+</div>
+
+</div><!-- end .main -->
+
+<script>
+const ANSWER_KEY = {
+  q1:'C', q2:'C', q3:'B', q4:'B', q5:'C', q6:'A',
+  q7:'C', q8:'C', q9:'D', q10:'A', q11:'B',
+  q12:'B', q13:'C', q14:'D', q15:'C', q16:'B'
+};
+
+const RATIONALE = {
+  q1: "Correct! Truman clearly states the U.S. must support free peoples resisting takeover — that is the core of containment.",
+  q2: "Correct! The opposing view to the Truman Doctrine was that the U.S. should focus on its own rebuilding rather than policing the world.",
+  q3: "Correct! Communist insurgencies gaining strength in Greece and Turkey directly caused Truman to ask Congress for aid.",
+  q4: "Correct! Before WWII the U.S. was largely isolationist; after Korea, the U.S. committed to active military containment overseas.",
+  q5: "Correct! MacArthur's public disagreement and firing shows there was major disagreement about how far to fight communism.",
+  q6: "Correct! The consistent belief in containment — stopping communism — ran from the Truman Doctrine all the way through Korea.",
+  q7: "Correct! The map shows Soviet missiles could reach most major U.S. cities, making the threat immediate and real.",
+  q8: "Correct! The crisis was resolved through secret back-channel negotiations and compromise — not military force.",
+  q9: "Correct! One key result of the crisis was the creation of the Moscow–Washington hotline to improve communication and prevent future crises.",
+  q10: "Correct! The chart clearly shows both countries rapidly increased their nuclear stockpiles throughout this period, with the U.S. leading.",
+  q11: "Correct! Both sides kept building — the rapid growth made the Cold War increasingly dangerous, especially around 1962.",
+  q12: "Correct! The domino theory convinced some Americans the war was necessary, while others — like the cartoonist — argued the human cost was too high.",
+  q13: "Correct! Eisenhower explicitly uses the domino analogy — if one country falls to communism, neighboring countries will follow.",
+  q14: "Correct! The domino theory drove U.S. alliances and military interventions throughout Asia to prevent communist expansion.",
+  q15: "Correct! The domino theory was hugely influential on decades of U.S. policy, but Southeast Asia did not fully fall to communism as feared.",
+  q16: "Correct! Like Korea, Vietnam was another U.S. military intervention to contain communism — the same containment policy, same logic."
+};
+
+function gradeTest() {
+  let correct = 0;
+  const total = 16;
+
+  document.querySelectorAll('.question-block').forEach(block => {
+    const qName = block.querySelector('input[type="radio"]').name;
+    const correctAnswer = block.dataset.correct;
+    const selected = block.querySelector(`input[name="${qName}"]:checked`);
+    const feedback = block.querySelector('.feedback');
+    const options = block.querySelectorAll('.option');
+
+    options.forEach(opt => {
+      const val = opt.querySelector('input').value;
+      if (val === correctAnswer) opt.classList.add('correct');
+      if (selected && selected.value === val && val !== correctAnswer) opt.classList.add('incorrect');
+    });
+
+    if (selected && selected.value === correctAnswer) {
+      correct++;
+      feedback.textContent = '✓ ' + RATIONALE[qName];
+      feedback.className = 'feedback show correct-fb';
+    } else if (selected) {
+      feedback.textContent = '✗ The correct answer is ' + correctAnswer + '. ' + RATIONALE[qName];
+      feedback.className = 'feedback show incorrect-fb';
+    } else {
+      feedback.textContent = '✗ No answer selected. The correct answer is ' + correctAnswer + '. ' + RATIONALE[qName];
+      feedback.className = 'feedback show incorrect-fb';
+    }
+
+    options.forEach(opt => opt.style.pointerEvents = 'none');
+  });
+
+  const pct = Math.round((correct / total) * 100);
+  let grade = '';
+  if (pct >= 90) grade = 'A — Exceeds Expectations';
+  else if (pct >= 70) grade = 'B — Meets Expectations';
+  else if (pct >= 50) grade = 'C — Approaching Expectations';
+  else if (pct >= 26) grade = 'D — Partially Meets Expectations';
+  else grade = 'F — Does Not Meet Expectations';
+
+  document.getElementById('score-pct').textContent = pct + '%';
+  document.getElementById('score-frac').textContent = correct + ' / ' + total + ' correct';
+  document.getElementById('score-grade').textContent = grade;
+  document.getElementById('score-display').style.display = 'block';
+  document.getElementById('print-btn').style.display = 'inline-block';
+  document.getElementById('submit-btn').disabled = true;
+
+  const name = document.getElementById('student-name').value || 'Student';
+  document.getElementById('score-banner').textContent =
+    name + ' — Cold War CFA Score: ' + correct + '/' + total + ' (' + pct + '%) — ' + grade;
+
+  document.getElementById('score-display').scrollIntoView({ behavior: 'smooth' });
+}
+
+function printTest() {
+  window.print();
+}
+</script>
+</body>
+</html>
